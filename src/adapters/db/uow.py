@@ -4,6 +4,10 @@ from src.adapters.db.repositories.agent import AgentRepository
 from src.adapters.db.repositories.topic import TopicRepository
 from src.adapters.db.session import async_session
 from src.adapters.db.repositories.user import UserRepository
+from src.adapters.db.repositories.ribbonway import RibbonwayRepository, PortalRepository, DockRepository
+from src.adapters.db.repositories.pod import PodRepository
+from src.adapters.db.repositories.rider import RiderRepository
+from src.adapters.db.repositories.ride_request import RideRequestRepository
 
 class UnitOfWork:
     def __init__(self, session: AsyncSession):
@@ -12,7 +16,13 @@ class UnitOfWork:
         self.user = UserRepository(session)
         self.agent = AgentRepository(session)
         self.topic = TopicRepository(session)
-        # self.action = ActionRepository(session) ...
+        # AMMS repos
+        self.ribbonway = RibbonwayRepository(session)
+        self.portal = PortalRepository(session)
+        self.dock = DockRepository(session)
+        self.pod = PodRepository(session)
+        self.rider = RiderRepository(session)
+        self.ride_request = RideRequestRepository(session)
 
     async def commit(self): await self.session.commit()
     async def rollback(self): await self.session.rollback()
