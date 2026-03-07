@@ -120,31 +120,3 @@ class UserMapper:
             created_at=entity.created_at.strftime("%m/%d/%Y %I:%M:%S %p") if entity.created_at else None
         )
 
-    """
-    @staticmethod
-    def model_to_entity_with_agents(model: UserModel) -> Optional[User]:
-        #Explicit method for user + agents use case
-        user_entity = UserMapper.model_to_entity_basic(model)
-        
-        if hasattr(model, 'agents') and model.agents:
-            from api.mappers.agent import AgentMapper
-            user_entity.agents = [
-                AgentMapper.model_to_entity_basic(agent) 
-                for agent in model.agents
-            ]
-        
-        return user_entity
-    
-    @staticmethod
-    def entity_to_response_with_agents(entity: User) -> UserWithAgentsResponse:
-        #Explicit method for response with agents
-        from api.mappers.agent import AgentMapper
-        
-        return UserWithAgentsResponse(
-            # ... user fields ...
-            agents=[
-                AgentMapper.entity_to_response(agent) 
-                for agent in getattr(entity, 'agents', [])
-            ]
-        )
-    """

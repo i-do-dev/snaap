@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from settings import Settings
 from src.adapters.db.session import async_engine as engine
-from api.routers import agents, auth
+from api.routers import auth
 from api.routers import ribbonways, pods, riders, rides
 from api.routers.ribbonways import portals_router
 from contextlib import asynccontextmanager
@@ -54,7 +54,6 @@ app.add_middleware(
 
 # Include the auth router with a prefix and tags for better API documentation
 app.include_router(auth.router, tags=["auth"])
-app.include_router(agents.router, tags=["agents"])
 
 # AMMS routers
 app.include_router(ribbonways.router)

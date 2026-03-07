@@ -1,7 +1,5 @@
 from contextlib import asynccontextmanager
 from sqlalchemy.ext.asyncio import AsyncSession
-from src.adapters.db.repositories.agent import AgentRepository
-from src.adapters.db.repositories.topic import TopicRepository
 from src.adapters.db.session import async_session
 from src.adapters.db.repositories.user import UserRepository
 from src.adapters.db.repositories.ribbonway import RibbonwayRepository, PortalRepository, DockRepository
@@ -14,8 +12,6 @@ class UnitOfWork:
         self.session = session
         # expose repos
         self.user = UserRepository(session)
-        self.agent = AgentRepository(session)
-        self.topic = TopicRepository(session)
         # AMMS repos
         self.ribbonway = RibbonwayRepository(session)
         self.portal = PortalRepository(session)
