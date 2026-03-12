@@ -8,6 +8,10 @@ from constants import NEO4J_INVALID_SCHEME_ERROR, INVALID_URL_ERROR, INVALID_POR
 @pytest.fixture
 def valid_env_vars(monkeypatch):
     monkeypatch.setenv("APP_NAME", "Test App")
+    monkeypatch.setenv("APP_VERSION", "1.0.0")
+    monkeypatch.setenv("ENV_NAME", "test")
+    monkeypatch.setenv("SECRET_KEY", "test-secret-key-at-least-32-characters-long-for-hs256")
+    monkeypatch.setenv("SUPABASE_JWT_SECRET", "test-supabase-jwt-secret-at-least-32-characters-long")
     monkeypatch.setenv("DATABASE_USERNAME", "test_user")
     monkeypatch.setenv("DATABASE_PASSWORD", "test_password")
     monkeypatch.setenv("DATABASE_HOSTNAME", "localhost")

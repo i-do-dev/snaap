@@ -26,6 +26,10 @@ The backend is structured to support a modular, layered architecture that promot
 	- Dependency wiring: `api/dependencies/*`
   - Request/response models: `api/contracts/*`
 	- Commands/queries and mapping: `src/handlers/*`
+		- One file per handler class (mirrors auth pattern)
+		- Commands: `src/handlers/commands/<domain>/<operation>.py`
+		- Queries:  `src/handlers/queries/<domain>/<operation>.py`
+		- Business rules belong in `src/core/services/`, not inline in handlers
 	- Domain entities/services: `src/core/*`
 	- Persistence and UoW: `src/adapters/db/*`
   - Other infrastructure or external integrations: `src/adapters/*`
