@@ -16,6 +16,8 @@ class Settings(BaseSettings):
     neo4j_uri: AnyUrl
     neo4j_username: str
     neo4j_password: str
+    supabase_url: str
+    supabase_anon_key: str
 
     model_config = SettingsConfigDict(
         env_file=".env",

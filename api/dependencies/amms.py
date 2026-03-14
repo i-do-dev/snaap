@@ -30,7 +30,7 @@ from settings import Settings
 # ── Rider OAuth2 scheme — tokenUrl is informational for Swagger UI only.
 # Riders authenticate via Supabase; they obtain tokens from the Supabase project,
 # not from this backend.  The bearer token sent here is a Supabase-issued JWT.
-rider_oauth_scheme = OAuth2PasswordBearer(tokenUrl="riders/token")
+rider_oauth_scheme = OAuth2PasswordBearer(tokenUrl="riders/token", scheme_name="RiderOAuth2")
 RiderBearerToken = Annotated[str, Depends(rider_oauth_scheme)]
 
 
